@@ -1,0 +1,45 @@
+{% load  static %}
+{% load bootstrap4 %}
+{% load i18n %}
+<!-- ======= Header ======= -->
+  <header id="header" class="header fixed-top">
+    <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+
+      <a href="{% url 'home:home' %}#hero" class="logo d-flex align-items-center">
+        <img src="{% static 'assets/img/logo4.png' %}" alt="">
+        <span>ShelterSearch</span>
+      </a>
+        <!-- ====== Navbar ====== -->
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="nav-link scrollto" href="{% url 'main:accommodation' %}">PG/Flats</a></li>
+          <li><a class="nav-link scrollto active" href="{% url 'main:taxi' %}">Book Taxi</a></li>
+          <li><a class="nav-link scrollto" href="{% url 'home:home' %}#values">Services</a></li>
+          {% if request.user.is_authenticated %}
+          <li class="dropdown"><a><img width="25" src="{% static 'assets/img/user.png' %}"><i class="bi bi-chevron-down"></i></a>
+            <ul>
+              {% if request.user.is_superuser %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'admin:login' %}">{% trans 'Django administration' %}</a>
+                    </li>
+              {% endif %}
+              <li><a href="{% url 'accounts:change_password' %}">{% trans 'Change password' %}</a></li>
+              <li><a href="{% url 'accounts:change_profile' %}">{% trans 'Change profile' %}</a></li>
+              <li><a href="{% url 'accounts:change_email' %}">{% trans 'Change email' %}</a></li>
+              <li><a class="nav-link" href="{% url 'accounts:log_out' %}">{% trans 'Log out' %}</a></li>
+            </ul>
+          </li>
+          {% else %}
+              <li><a href="{% url 'accounts:log_in' %}">{% trans 'Log in' %}</a></li>
+              <li><a class="getstarted nav-link" href="{% url 'accounts:sign_up' %}">{% trans 'Create an account' %}</a></li>
+          {% endif %}
+
+
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav>
+        <!-- ======.navbar ====== -->
+
+    </div>
+  </header>
+<!-- End Header -->

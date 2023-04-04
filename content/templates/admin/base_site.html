@@ -1,0 +1,10 @@
+
+{% extends "admin/base.html" %}
+
+{% block title %}ShelterSearch - Administration{% if subtitle %}{{ subtitle }} | {% endif %}{{ title }} | {{ site_title|default:_('Django site admin') }}{% endblock %}
+
+{% block branding %}
+<h1 id="ShelterSearch" style="font-family: cursive;" ><a href="{% url 'admin:index' %}">ShelterSerach Administration</a></h1>
+{% endblock %}
+
+{% block nav-global %}{% endblock %}

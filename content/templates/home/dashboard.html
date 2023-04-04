@@ -1,0 +1,48 @@
+{% extends 'home/base.html' %}
+{% load static %}
+
+{% block content %}
+    <section id="values" class="values">
+      <div class="container" data-aos="fade-up">
+        <br><br>
+        <header class="section-header">
+          <p>Hi, {{ user.first_name }}</p>
+      <a class="getstarted scrollto" href="{% url 'accounts:log_out' %}">Logout</a>
+        </header>
+
+        <div class="row">
+
+          <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
+            <div class="box">
+              <img src="{% static 'assets/img/pg.jpg' %}" class="img-fluid" alt="">
+              <h3>Accommodation</h3>
+              <p>We help you find the best Accommodation that suites you.</p>
+            </div>
+          </div>
+
+          <div class="col-lg-4 mt-4 mt-lg-0" data-aos="fade-up" data-aos-delay="400">
+            <div class="box">
+                <br>
+              <img src="{% static 'assets/img/taxi.jpg' %}" class="img-fluid" alt="">
+                <br><br>
+              <h3>Taxi Service</h3>
+              <p>We provide end to end taxi service within the city at the least rates available.</p>
+            </div>
+          </div>
+
+          <div class="col-lg-4 mt-4 mt-lg-0" data-aos="fade-up" data-aos-delay="600">
+            <div class="box">
+                <br><br>
+              <img src="{% static 'assets/img/hotel.jpg' %}" class="img-fluid" alt="">
+                <br><br>
+              <h3>Hotel Booking</h3>
+              <p>We provide the best available hotels in the nearest proximity to your Accommodation.</p>
+            </div>
+          </div>
+
+        </div>
+        <br>
+      </div>
+
+    </section>
+{% endblock %}

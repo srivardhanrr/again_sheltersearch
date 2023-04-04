@@ -1,0 +1,32 @@
+{% extends 'accounts/base_file.html' %}
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% load i18n %}
+
+{% block title %}Activation{% endblock %}
+
+{% block content %}
+					<div class="card shadow-lg">
+						<div class="card-body p-5">
+
+							<h4 style="color: #013ca3; font-family: sans-serif ">Resend an activation code</h4>
+							<br>
+                            <form method="post" class="php-email-form">
+
+        						{% csrf_token %}
+								{% bootstrap_form form %}
+								<br>
+                                <div class="d-grid gap-2">
+                                  {% bootstrap_button "Next" button_type="submit" button_class="btn-primary" %}
+                                </div>
+    						</form>
+
+						</div>
+						<div class="card-footer py-3 border-0">
+							<div class="text-center">
+								Already Activated? <a href="{% url 'accounts:log_in' %}" class="text-dark">Login</a>
+							</div>
+						</div>
+					</div>
+{% endblock %}

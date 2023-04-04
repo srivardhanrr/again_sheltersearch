@@ -1,0 +1,36 @@
+{% extends 'accounts/base_file.html' %}
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% load i18n %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+					<div class="card shadow-lg">
+						<div class="card-body p-5">
+							<h2 style="color: #013ca3; font-family: sans-serif ">Login</h2>
+							<br>
+                            <form method="post" class="php-email-form">
+
+        						{% csrf_token %}
+								{% bootstrap_form form show_label=False %}
+								<br>
+                                <div class="d-grid gap-2">
+                                  {% bootstrap_button "Log In" button_type="submit" button_class="btn-primary" %}
+                                </div>
+    						</form>
+							<br>
+						<div class="list-group p-4">
+							<a href="{% url 'accounts:restore_password' %}" class="list-group-item list-group-item-action">{% trans 'Forgot your password?' %}</a>
+							<a href="{% url 'accounts:resend_activation_code' %}" class="list-group-item list-group-item-action">{% trans 'Resend an activation code' %}</a>
+						</div>
+						</div>
+						<div class="card-footer py-3 border-0">
+							<div class="text-center">
+								Don't have an account? <a href="{% url 'accounts:sign_up' %}" class="text-dark">Register</a>
+							</div>
+						</div>
+					</div>
+{% endblock %}
+

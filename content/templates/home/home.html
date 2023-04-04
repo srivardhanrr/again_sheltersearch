@@ -1,0 +1,231 @@
+{% extends 'home/base.html' %}
+{% load static %}
+
+{% block title %}
+    Home
+{% endblock %}
+
+{% block css %}
+      <link href="{% static 'assets/css/pop-style.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+    <!-- ======= Header ======= -->
+    <section id="hero" class="hero d-flex align-items-center">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 d-flex flex-column justify-content-center">
+            <h1 data-aos="fade-up">Helping you find your Ideal Stay in <span style="color: forestgreen">Bangalore</span>
+{#                for <h1 data-aos="fade-up" style="color: mediumvioletred">Free*.</h1></h1>#}
+          <h2 data-aos="fade-up" data-aos-delay="400" style="color: slateblue">“We strive to make your move a Happy Experience.”</h2>
+          <div data-aos="fade-up" data-aos-delay="600">
+            <div class="text-center text-lg-start">
+              <a href="{% url 'home:register' %}" class="btn-get-started scrollto d-inline-flex align-items-center justify-content-center align-self-center">
+                <span>Register Now </span>
+                <i class="bi bi-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6 hero-img" data-aos="zoom-out" data-aos-delay="200">
+          <img src="{% static 'assets/img/main-image.png' %}" class="img-fluid" alt="">
+        </div>
+      </div>
+    </div>
+  </section>
+    <!-- ======= End Hero ===== -->
+
+    <main id="main">
+
+    <!-- ======= About Section ======= -->
+
+    <section id="about" class="about">
+
+      <div class="container" data-aos="fade-up">
+        <div class="row gx-0">
+
+          <div class="col-lg-6 d-flex flex-column justify-content-center" data-aos="fade-up" data-aos-delay="200">
+            <div class="content">
+              <h3>Who We Are</h3>
+              <h2>A decision to simplify and make it easier for you to find that perfect stay in an affordable & efficient way.</h2>
+              <p>
+                Our company is dedicated to helping students who come to Bengaluru to study. We work with universities and colleges around campus to help find the right place for your child, before they arrive. And once they are here, we help them get settled and provide support to their transition into life in college
+              </p>
+              <div class="text-center text-lg-start">
+                <a href="{% url 'home:register' %}" class="btn-read-more d-inline-flex align-items-center justify-content-center align-self-center">
+                  <span>Get Started</span>
+                  <i class="bi bi-arrow-right"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6 d-flex align-items-center" data-aos="zoom-out" data-aos-delay="200">
+            <img src="{% static 'assets/img/aboutus-image.png' %}" class="img-fluid" alt="">
+          </div>
+
+        </div>
+      </div>
+
+    </section>
+    <!-- End About Section -->
+
+    <!-- ======= Values Section ======= -->
+    <section id="values" class="values">
+
+      <div class="container" data-aos="fade-up">
+
+        <header class="section-header">
+          <h2>Our Services</h2>
+          <p>Just Simplify</p>
+        </header>
+
+        <div class="row">
+
+          <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
+            <div class="box">
+              <img src="{% static 'assets/img/pg.jpg' %}" class="img-fluid" alt="">
+              <h3>Accommodation</h3>
+              <p>We help you find the best Accommodation that suites you.</p>
+            </div>
+          </div>
+
+          <div class="col-lg-4 mt-4 mt-lg-0" data-aos="fade-up" data-aos-delay="400">
+            <div class="box">
+                <br>
+              <img src="{% static 'assets/img/taxi.jpg' %}" class="img-fluid" alt="">
+                <br><br>
+              <h3>Taxi Service</h3>
+              <p>We provide end to end taxi service within the city at the least rates available.</p>
+            </div>
+          </div>
+
+          <div class="col-lg-4 mt-4 mt-lg-0" data-aos="fade-up" data-aos-delay="600">
+            <div class="box">
+                <br><br>
+              <img src="{% static 'assets/img/hotel.jpg' %}" class="img-fluid" alt="">
+                <br><br>
+              <h3>Hotel Booking</h3>
+              <p>We provide the best available hotels in the nearest proximity to your Accommodation.</p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+    <!-- End Values Section -->
+    <!-- ======= Clients Section ======= -->
+    <section id="clients" class="clients">
+
+      <div class="container" data-aos="fade-up">
+
+        <header class="section-header">
+          <p>Our Partners</p>
+        </header>
+
+        <div class="clients-slider swiper">
+          <div class="swiper-wrapper align-items-center">
+              {% for i in partners %}
+              <div class="swiper-slide">
+                  <img src="{{ i.image }}" class="img-fluid" alt="{{ i.name }}"></div>
+              {% endfor %}
+              <div class="swiper-slide"><img src="{% static 'assets/img/pg/bluebells.png' %}" class="img-fluid" alt=""></div>
+              <div class="swiper-slide"><img src="{% static 'assets/img/pg/zolo.jpg' %}" class="img-fluid" alt=""></div>
+              <div class="swiper-slide"><img src="{% static 'assets/img/clients/client-3.png' %}" class="img-fluid" alt=""></div>
+              <div class="swiper-slide"><img src="{% static 'assets/img/clients/client-4.png' %}" class="img-fluid" alt=""></div>
+              <div class="swiper-slide"><img src="{% static 'assets/img/clients/client-5.png' %}" class="img-fluid" alt=""></div>
+              <div class="swiper-slide"><img src="{% static 'assets/img/clients/client-6.png' %}" class="img-fluid" alt=""></div>
+              <div class="swiper-slide"><img src="{% static 'assets/img/clients/client-7.png' %}" class="img-fluid" alt=""></div>
+              <div class="swiper-slide"><img src="{% static 'assets/img/clients/client-8.png' %}" class="img-fluid" alt=""></div>
+          </div>
+          <div class="swiper-pagination"></div>
+        </div>
+      </div>
+
+    </section><!-- End Clients Section -->
+
+    <!-- ======= Testimonials Section ======= -->
+    <section id="testimonials" class="testimonials">
+
+      <div class="container" data-aos="fade-up">
+
+        <header class="section-header">
+          <h2>Testimonials</h2>
+          <p>What Our Customers Say About Us.</p>
+        </header>
+
+        <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="200">
+          <div class="swiper-wrapper">
+            {% for testimonial in testimonials %}
+            <div class="swiper-slide">
+              <div class="testimonial-item">
+                <div class="stars">
+                    {% for i in testimonial.rating %}
+                        <i class="bi bi-star-fill"></i>
+                    {% endfor %}
+                </div>
+                <p>
+                  {{ testimonial.message }}
+                </p>
+                <div class="profile mt-auto">
+                  <img src="{{ testimonial.image }}" class="testimonial-img" alt="">
+                  <h3>{{ testimonial.name }}</h3>
+                  <h4>{{ testimonial.occupation }}</h4>
+                </div>
+              </div>
+            </div>
+              {% endfor %}
+
+
+          </div>
+          <div class="swiper-pagination"></div>
+        </div>
+
+      </div>
+
+    </section>
+    <!-- End Testimonials Section -->
+
+    <!-- ====== Contact Section ======= -->
+    {% include 'home/sections/contact-section.html' with posts=postdata %}
+    <!-- ==== End Contact Section ===== -->
+
+    <div class="parentDisable">
+    <div class="popupPage">
+        <div class="contentBox">
+            <div class="close"></div>
+            <div class="imgBx">
+                <a href="{% url 'home:register' %}" class="portfolio-lightbox"><img src="{% static 'assets/img/flyer-4.png' %}" alt="flyer"></a>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    </main>
+
+
+
+{% endblock %}
+
+{% block scripts %}
+    <script src="{% static 'assets/vendor/php-email-form/validator.js' %}"></script>
+
+    <script>
+    const popupPage = document.querySelector('.popupPage');
+    const parent = document.querySelector('.parentDisable');
+    const close = document.querySelector('.close');
+    window.onload = function() {
+        setTimeout(function (){
+            popupPage.style.display = "block";
+            parent.style.display = "block";
+        }, 10000)
+    }
+
+    close.addEventListener('click', () => {
+        popupPage.style.display = "none";
+        parent.style.display = "none";
+    })
+    </script>
+{% endblock %}

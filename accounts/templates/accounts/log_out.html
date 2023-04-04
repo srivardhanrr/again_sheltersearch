@@ -1,0 +1,28 @@
+{% extends 'layouts/default/base_page.html' %}
+
+{% load bootstrap4 %}
+{% load i18n %}
+
+{% block content %}
+<br><br>
+<section id="contact" class="contact">
+
+      <div class="container" data-aos="fade-up">
+        <header class="section-header">
+          <h2>ShelterSearch</h2>
+          <p>{% trans 'Logged out' %}</p>
+        </header>
+        {% bootstrap_messages %}
+    <p>
+        {% trans 'Thanks for spending some quality time with the site today.' %}
+    </p>
+
+    <p>
+        <a href="{% url 'accounts:log_in' %}">{% trans 'Log in again' %}</a>
+    </p>
+          </div>
+    </div>
+
+  </div>
+</section>
+{% endblock %}

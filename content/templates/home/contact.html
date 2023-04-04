@@ -1,0 +1,16 @@
+{% extends 'home/base.html' %}
+{% load static %}
+
+{% block title %}
+    Contact
+{% endblock %}
+
+
+{% block content %}
+    <br><br>
+    {% include 'home/sections/contact-section.html' with posts=postdata %}
+{% endblock %}
+
+{% block scripts %}
+    <script src="{% static 'assets/vendor/php-email-form/validator.js' %}"></script>
+{% endblock %}

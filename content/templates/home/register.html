@@ -1,0 +1,18 @@
+{% extends 'home/base.html' %}
+{% load static %}
+
+
+{% block title %}
+    Registration
+{% endblock %}
+
+{% block content %}
+    <br><br>
+    {% include "home/sections/register-section.html" with posts=postdata %}
+{% endblock %}
+{% block scripts %}
+{#    <script defer src="https://checkout.razorpay.com/v1/checkout.js"></script>#}
+{#    <script defer src="{% static 'assets/vendor/checkout_helper.js' %}"></script>#}
+        <script src="{% static 'assets/vendor/php-email-form/validator.js' %}"></script>
+
+{% endblock %}

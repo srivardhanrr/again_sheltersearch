@@ -1,0 +1,41 @@
+{% extends 'accounts/base_file.html' %}
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% load i18n %}
+
+{% block title %}Signup{% endblock %}
+
+{% block content %}
+
+	<div class="card shadow-lg">
+		<div class="card-body p-5">
+			<h2 style="color: #013ca3; font-family: sans-serif ">Create an account</h2>
+			<br>
+			<form method="post" class="php-email-form">
+				{% csrf_token %}
+<!--				{% bootstrap_form form label_class="form-label" show_help=False show_label=False %}-->
+<!--				{% bootstrap_field form.first_name show_help=False show_label=False placeholder="Name" %}-->
+				 <input class="form-control" type="text" name="first_name" placeholder="Name" required>
+				<br>
+				 <input class="form-control" type="tel" maxlength="10" name="last_name" placeholder="Phone" required>
+				<br>
+				{% bootstrap_field form.email show_help=False show_label=False %}
+				{% bootstrap_field form.password1 show_help=False show_label=False %}
+				{% bootstrap_field form.password2 show_help=False show_label=False %}
+				<br>
+				<div class="d-grid gap-2">
+				  	{% bootstrap_button "Create" button_type="submit" button_class="btn-primary" %}
+				</div>
+			</form>
+		</div>
+		<div class="card-footer py-3 border-0">
+			<div class="text-center">
+				Already have an account? <a href="{% url 'accounts:log_in' %}" class="text-dark">Login</a>
+			</div>
+		</div>
+	</div>
+{% endblock %}
+
+
+

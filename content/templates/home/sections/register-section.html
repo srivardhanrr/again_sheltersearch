@@ -1,0 +1,70 @@
+{% load static %}
+    <!-- ======= Contact Section ======= -->
+    <section id="contact" class="contact">
+
+      <div class="container" data-aos="fade-up">
+
+        <header class="section-header">
+          <h2>ShelterSearch</h2>
+          <p>Register</p>
+        </header>
+        <div class="row gy-4">
+
+          <div class="col-lg-12">
+            <form action="{% url 'home:register' %}" method="post" role="form" class="php-email-form register-payment">
+                <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}" >
+{#                <input type="hidden" name="order_id" value="{{ order_id }}">#}
+{#                <input type="hidden" name="pay_id" value="{{ pay_id }}">#}
+              <div class="row gy-4">
+                <div class="col-md-6">
+                    <input type="text" name="name" class="form-control" placeholder="Student Name" required>
+                </div>
+                <div class="col-md-6 ">
+                    <input type="email" name="email" class="form-control" placeholder="Your Email" required>
+                </div>
+
+                <div class="col-md-6">
+                    <input type="tel" name="phone" class="form-control" placeholder="Phone" maxlength="10" required>
+                </div>
+
+                <div class="col-md-6">
+                    <select name="gender" class="form-control" required>
+                        <option value disabled selected hidden>Gender</option>
+                        <option value="M">Male</option>
+                        <option value="F">Female</option>
+                        <option value="O">Custom</option>
+                    </select>
+                </div>
+                <div class="col-md-6">
+                    <select name="room" class="form-control" required >
+                        <option value disabled selected hidden>Room Occupancy</option>
+                        <option value="S">Single</option>
+                        <option value="D">Double</option>
+                        <option value="T">Triple</option>
+                    </select>
+                </div>
+                <div class="col-md-6">
+                  <input type="text" name="college" class="form-control" placeholder="Your College Name" required>
+                </div>
+                <div class="col-md-12">
+                      <label class="form-label">By clicking Register, you agree to our <a href="{% url 'home:policies' 'terms_of_service' %}">Terms of Service</a>, <a href="{% url 'home:policies' 'privacy_policy' %}">Privacy Policy</a> and <a href="{% url 'home:policies' 'refund_policy' %}">Refund Policy</a>. </label>
+                  </div>
+
+                <div class="col-md-12 text-center">
+                  <div class="loading">Loading</div>
+                  <div class="error-message"></div>
+                  <div class="sent-message">Thank you! Now it's our time to work.</div>
+
+                  <button type="submit" value="Submit">Register Me.</button>
+                </div>
+              </div>
+            </form>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+    <!-- End Contact Section -->

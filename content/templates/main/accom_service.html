@@ -1,0 +1,161 @@
+{% extends 'layouts/default/base_page.html' %}
+{% load static %}
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% load i18n %}
+
+{% block title %}
+Accommodation
+{% endblock %}
+
+{% block content %}
+<section id="values" class="values">
+
+      <div class="container" data-aos="fade-up">
+
+        <header class="section-header">
+            <br>
+          <p>Book PG/Flats</p>
+            <br>
+          <h2>Find you Pg/Flats in one go.</h2>
+        </header>
+
+        <div class="row">
+
+            <div class="col-lg-6" data-aos="fade-up" data-aos-delay="400">
+            <div class="box">
+                <div class="card border-primary mb-3" style="max-width: 560px; max-height: 120px;">
+                  <div class="row g-0">
+                    <div class="col-md-3">
+                      <img width="150" src="{% static 'assets/img/plane.png' %}" class="img-fluid rounded-start" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                      <div class="card-body">
+                          <h5 class="card-title"><b>Flight tracking</b></h5>
+                        <p class="card-text">Your driver will track your flight and wait for you if it's delayed</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="card border-primary mb-3" style="max-width: 560px; max-height: 120px;">
+                  <div class="row g-0">
+                    <div class="col-md-3">
+                      <img width="150" src="{% static 'assets/img/credit-card.png' %}" class="img-fluid rounded-start" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                      <div class="card-body">
+                          <h5 class="card-title"><b>One clear price</b></h5>
+                        <p class="card-text">Your price is confirmed up front – no extra costs, no cash required</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="card border-primary mb-3" style="max-width: 560px; max-height: 120px;">
+                  <div class="row g-0">
+                    <div class="col-md-3">
+                      <img width="150" src="{% static 'assets/img/checked.png' %}" class="img-fluid rounded-start" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                      <div class="card-body">
+                          <h5 class="card-title"><b>Tried and true service</b></h5>
+                        <p class="card-text">We work with professional drivers and have 24/7 customer care</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+        </div>
+
+          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="box">
+                {% bootstrap_messages %}
+                <form action="{% url 'main:accommodation' %}" method="post" role="form">
+                <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
+                <input type="hidden" name="order_id" value="{{ order_id }}">
+              <div class="row gy-4">
+                <div class="col-md-6">
+                    <label class="form-label" for="accommodation"><b>Accommodation Type</b></label>
+                    <select name="accommodation_type" class="form-control" id="accommodation" required>
+                        <option value disabled selected hidden>Select Type</option>
+                        <option value="Pg" >Paying Guest</option>
+                        <option value="Flat">Flat</option>
+                        <option value="Hostel">Hostel</option>
+                    </select>
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label" for="occupancy"><b>Occupancy</b></label>
+                        <select name="occupancy" class="form-control" id="occupancy" required>
+                            <option value disabled selected hidden>SELECT Accommodation First</option>
+                        </select>
+                </div>
+                <div id="gender"></div>
+
+                  <div class="col-md-6">
+                      <label class="form-label"><b>Move in Date</b></label>
+                    <input type="date" class="form-control" name="move_in_date" required>
+                  </div>
+
+                <div class="col-md-12 ">
+                    <label class="form-label"><b>Location/Area</b></label>
+                  <input type="text" class="form-control" name="address" placeholder="Preferred Location" required>
+                </div>
+
+                <div class="col-md-12 text-center">
+                  <button type="submit" value="Submit" class="btn btn-primary">Find Accommodation</button>
+                </div>
+              </div>
+            </form>
+            </div>
+        <button class="btn btn-primary col-3 offset-md-9 mt-3">
+            <span>Book Taxi</span>
+        </button>
+          </div>
+
+
+
+        </div>
+      </div>
+    <div class="container">
+    </div>
+
+    </section>
+
+<script>
+    document.getElementById("accommodation").addEventListener("change", function() {
+  var journey = document.getElementById("accommodation").value;
+  var color = document.getElementById("occupancy");
+  var gender = document.getElementById("gender");
+
+  if (journey === "Pg") {
+    color.innerHTML = "<option value='single'>Single Sharing</option>" +
+        "<option value='Double'>Double Sharing</option>" +
+        "<option value='Triple'>Triple Sharing</option>";
+    gender.outerHTML = "<div class='col-md-6'>" +
+        "<label class='form-label'><b>Gender</b></label>" +
+        "                    <select name='gender' class='form-control' required>" +
+        "                        <option value disabled selected hidden>Gender</option>" +
+        "                        <option value='Male'>Male</option>" +
+        "                        <option value='Female'>Female</option>" +
+        "                        <option value='Other'>Other</option>" +
+        "                    </select>" +
+        "</div>";
+  } else if (journey === "Flat") {
+    color.innerHTML = "<option value='1 BHK'>1 BHK</option>" +
+        "<option value='2 BHK'>2 BHK</option>" +
+        "<option value='3 BHK'>3 BHK</option>" +
+        "<option value='4 BHK'>4 BHK</option>";
+    gender.innerHTML = "<div id='gender'></div>";
+  } else if (journey === "Hostel") {
+    color.innerHTML = "<option value='single'>Single Sharing</option>" +
+        "<option value='Double'>Double Sharing</option>" +
+        "<option value='Triple'>Triple Sharing</option>";
+  } else {
+    color.innerHTML = ""; // default to no options
+  }
+});
+</script>
+{% endblock %}
