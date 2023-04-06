@@ -8,18 +8,17 @@ class Register(models.Model):
     gender = models.CharField(max_length=10)
     room = models.CharField(max_length=10)
     college = models.CharField(max_length=100)
-    # pay_id = models.CharField(max_length=50, default="Not Paid")
-    # order_id = models.CharField(max_length=50, default="No")
-    # paid = models.CharField(max_length=5, default="No")
-    # signature = models.CharField(max_length=100, default="Empty")
     checked = models.CharField(max_length=5, blank=True, choices=(("Y", "Yes"), ("N", "No")))
     created_at = models.DateTimeField(auto_now_add=True, null=True, blank=True)
+
 
 class Contacts(models.Model):
     name = models.CharField(max_length=100)
     mobile = models.IntegerField()
     email = models.EmailField()
     message = models.TextField(blank=True)
+    checked = models.CharField(max_length=5, blank=True, choices=(("Y", "Yes"), ("N", "No")))
+    created_at = models.DateTimeField(auto_now_add=True, null=True, blank=True)
 
     def __str__(self):
         return self.name
@@ -63,8 +62,3 @@ class Testimonials(models.Model):
 class Partners(models.Model):
     name = models.CharField(max_length=30)
     image = models.CharField(max_length=5000, null=True, blank=True)
-
-
-
-
-

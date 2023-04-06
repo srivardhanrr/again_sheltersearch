@@ -13,8 +13,8 @@
       <nav id="navbar" class="navbar">
         <ul>
           <li><a class="nav-link scrollto" href="{% url 'main:accommodation' %}">PG/Flats</a></li>
-          <li><a class="nav-link scrollto active" href="{% url 'main:taxi' %}">Book Taxi</a></li>
-          <li><a class="nav-link scrollto" href="{% url 'home:home' %}#values">Services</a></li>
+          <li><a class="nav-link scrollto" href="{% url 'main:taxi' %}">Book Taxi</a></li>
+          <li><a class="nav-link scrollto" href="{% url 'main:hotel' %}">Book Hotel</a></li>
           {% if request.user.is_authenticated %}
           <li class="dropdown"><a><img width="25" src="{% static 'assets/img/user.png' %}"><i class="bi bi-chevron-down"></i></a>
             <ul>
@@ -33,7 +33,7 @@
               <li><a href="{% url 'accounts:log_in' %}">{% trans 'Log in' %}</a></li>
               <li><a class="getstarted nav-link" href="{% url 'accounts:sign_up' %}">{% trans 'Create an account' %}</a></li>
           {% endif %}
-
+              <li><a class="nav-link" href=""> </a></li>
 
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>

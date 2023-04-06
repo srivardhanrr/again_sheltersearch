@@ -67,10 +67,15 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'app.wsgi.application'
 
-EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
-EMAIL_FILE_PATH = os.path.join(CONTENT_DIR, 'tmp/emails')
-EMAIL_HOST_USER = 'test@example.com'
-DEFAULT_FROM_EMAIL = 'test@example.com'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+EMAIL_HOST = 'mail.sheltersearch.in'
+EMAIL_HOST_USER = 'alerts@sheltersearch.in'
+DEFAULT_FROM_EMAIL = 'alerts@sheltersearch.in'
+EMAIL_HOST_PASSWORD = 'Farhad#2@1'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = False
+
 
 DATABASES = {
     'default': {

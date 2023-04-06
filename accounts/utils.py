@@ -3,6 +3,7 @@ from django.core.mail import EmailMultiAlternatives
 from django.template.loader import render_to_string
 from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
+from threading import Thread
 
 
 def send_mail(to, template, context):
@@ -19,7 +20,6 @@ def send_activation_email(request, email, code):
         'subject': _('Profile activation'),
         'uri': request.build_absolute_uri(reverse('accounts:activate', kwargs={'code': code})),
     }
-
     send_mail(email, 'activate_profile', context)
 
 
