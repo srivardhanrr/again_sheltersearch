@@ -81,7 +81,11 @@ EMAIL_USE_TLS = False
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'NAME': 'my_db',
+        'USER': 'my_shubham',
+        'PASS': 'Shubham#2@1',
+        'HOST': '216.219.94.125',
+        'PORT': '3306',
     }
 }
 
