@@ -11,7 +11,7 @@ CONTENT_DIR = os.path.join(BASE_DIR, 'content')
 SECRET_KEY = 'NhfTvayqggTBPswCXXhWaN69HuglgZIkM'
 
 DEBUG = True
-ALLOWED_HOSTS = ['2408-119-82-126-254.in.ngrok.io', '127.0.0.1', 'beta.sheltersearch.in',  'sheltersearch.in']
+ALLOWED_HOSTS = ['07b3-119-82-126-254.ngrok-free.app', '127.0.0.1', 'beta.sheltersearch.in',  'sheltersearch.in']
 
 SITE_ID = 1
 
@@ -32,6 +32,11 @@ INSTALLED_APPS = [
     'main',
     'accounts',
     'home',
+
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
 ]
 
 MIDDLEWARE = [
@@ -47,6 +52,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'app.urls'
+
 
 TEMPLATES = [
     {
@@ -144,3 +150,21 @@ LOCALE_PATHS = [
 ]
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend'
+]
+
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'SCOPE': [
+            'profile',
+            'email',
+        ],
+        'AUTH_PARAMS': {
+            'access_type': 'online',
+        }
+    }
+}

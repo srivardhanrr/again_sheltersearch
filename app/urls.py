@@ -11,6 +11,7 @@ urlpatterns = [
     path('i18n/', include('django.conf.urls.i18n')),
 
     path('accounts/', include('accounts.urls')),
+    path('allaccounts/', include('allauth.urls')),
 ]
 
 if settings.DEBUG:
