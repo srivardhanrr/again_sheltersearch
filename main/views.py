@@ -12,8 +12,34 @@ class IndexPageView(TemplateView):
     template_name = 'main/dashboard.html'
 
 
+class IndexPageViewM(TemplateView):
+    template_name = 'main/dashboard_m.html'
+
+
+class TestPageView(TemplateView):
+    template_name = 'main/test.html'
+
+
+class Test2PageView(TemplateView):
+    template_name = 'main/accom_service_m.html'
+
+
+class HotelServiceViewM(TemplateView):
+    template_name = 'main/hotel_service_m.html'
+
+
 class HotelServiceView(TemplateView):
     template_name = 'main/hotel_service.html'
+
+
+class TaxiServiceViewM(TemplateView):
+    template_name = 'main/taxi_service_m.html'
+
+    def get(self, request, **kwargs):
+        now = timezone.now()
+        order_id = f'{now.year}{now.month}{now.day}-{uuid.uuid4().hex}'
+        context = {'order_id': order_id}
+        return render(request, self.template_name, context)
 
 
 class TaxiServiceView(TemplateView):
@@ -33,14 +59,24 @@ class TaxiServiceView(TemplateView):
             messages.error(request, "Form Invalid.")
             return render(request, self.template_name)
         booking = form.save(commit=False)
-        if AirportTaxiService.objects.filter(order_id=request.POST.get('order_id', )).exists():
+        if AirportTaxiService.objects.filter(order_id=request.POST.get('order_id')).exists():
             messages.error(request, "Order id already exists. Please refresh the page and try again.")
             return redirect("main:taxi")
-        booking.order_id = request.POST.get('order_id', )
+        booking.order_id = request.POST.get('order_id')
         booking.client = self.request.user
         booking.save()
         messages.success(request, "Your request for Airport taxi has been placed successfully. You will receive a confirmation email shortly.")
         return redirect("main:taxi")
+
+
+class AccommodationServiceViewM(TemplateView):
+    template_name = 'main/accom_service_m.html'
+
+    def get(self, request, **kwargs):
+        now = timezone.now()
+        order_id = f'{now.year}{now.month}{now.day}-{uuid.uuid4().hex}'
+        context = {'order_id': order_id}
+        return render(request, self.template_name, context)
 
 
 class AccommodationServiceView(TemplateView):

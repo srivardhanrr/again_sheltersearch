@@ -1,4 +1,4 @@
-{% extends 'layouts/default/base_page.html' %}
+{% extends 'layouts/default/base_page_m.html' %}
 {% load static %}
 {% load bootstrap5 %}
 {% bootstrap_css %}
@@ -10,9 +10,10 @@ Airport Taxis
 {% endblock %}
 
 {% block css %}
+<script defer async type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
 <script type="text/javascript">
-    if (screen.width <= 768) {
-  window.location = "{% url 'main:taxi_m' %}";
+    if (screen.width > 768) {
+  window.location = "{% url 'main:taxi' %}";
     }
 </script>
 {% endblock %}
@@ -31,49 +32,35 @@ Airport Taxis
 
         <div class="row">
 
-            <div class="col-lg-6" data-aos="fade-up" data-aos-delay="400">
-            <div class="box">
-                <div class="card border-primary mb-3" style="max-width: 560px; max-height: 120px;">
-                  <div class="row g-0">
-                    <div class="col-md-3">
-                      <img width="150" src="{% static 'assets/img/plane.png' %}" class="img-fluid rounded-start" alt="...">
-                    </div>
-                    <div class="col-md-8">
-                      <div class="card-body">
-                          <h5 class="card-title"><b>Flight tracking</b></h5>
-                        <p class="card-text">Your driver will track your flight and wait for you if it's delayed</p>
+            <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+            <div class="box" style="padding: 1px 1px;">
+                <div class="card border-primary" style="flex-direction: row">
+                  <img src="{% static 'assets/img/plane.webp' %}" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <div class="test-section">
+                        <h5 class="card-title"><b>Flight Tracking</b></h5>
+                      <p class="card-text">Your driver will track your flight and wait for you if it's delayed</p>
                       </div>
-                    </div>
+                  </div>
+                </div>
+                <div class="card border-primary" style="flex-direction: row">
+                  <img src="{% static 'assets/img/credit-card.webp' %}" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <div class="test-section">
+                        <h5 class="card-title"><b>One clear price</b></h5>
+                      <p class="card-text">Your price is confirmed up front – no extra costs, no cash required</p>
+                      </div>
+                  </div>
+                </div> <div class="card border-primary" style="flex-direction: row">
+                  <img src="{% static 'assets/img/checked.webp' %}" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <div class="test-section">
+                        <h5 class="card-title"><b>Tried and true service</b></h5>
+                      <p class="card-text">We work with professional drivers and have 24/7 customer care</p>
+                      </div>
                   </div>
                 </div>
 
-                <div class="card border-primary mb-3" style="max-width: 560px; max-height: 120px;">
-                  <div class="row g-0">
-                    <div class="col-md-3">
-                      <img width="150" src="{% static 'assets/img/credit-card.png' %}" class="img-fluid rounded-start" alt="...">
-                    </div>
-                    <div class="col-md-8">
-                      <div class="card-body">
-                          <h5 class="card-title"><b>One clear price</b></h5>
-                        <p class="card-text">Your price is confirmed up front – no extra costs, no cash required</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="card border-primary mb-3" style="max-width: 560px; max-height: 120px;">
-                  <div class="row g-0">
-                    <div class="col-md-3">
-                      <img width="150" src="{% static 'assets/img/checked.png' %}" class="img-fluid rounded-start" alt="...">
-                    </div>
-                    <div class="col-md-8">
-                      <div class="card-body">
-                          <h5 class="card-title"><b>Tried and true service</b></h5>
-                        <p class="card-text">We work with professional drivers and have 24/7 customer care</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
             </div>
         </div>
 
@@ -116,19 +103,40 @@ Airport Taxis
                     <label class="form-label"><b>Pickup/Drop Address</b></label>
                   <input type="text" id="autocomplete" class="form-control" name="address" placeholder="Your Address" required>
                 </div>
-                <div></div>
+
                 <div class="col-md-12 text-center">
-                  <button type="submit" value="Submit" class="btn btn-primary">Book Taxi</button>
+                  <button type="submit" value="Submit" class="btn btn-primary">Request Taxi</button>
                 </div>
+
               </div>
             </form>
             </div>
           </div>
 
+
+
         </div>
       </div>
 
     </section>
+<div class="bottom-bar">
+      <a href="{% url 'main:index' %}">
+      <ion-icon name="home-outline" class="icon" onclick="change(this)">
+      </ion-icon>
+      </a>
+      <a href="{% url 'main:taxi_m' %}">
+      <ion-icon name="car-outline" class="icon active" onclick="change(this)">
+      </ion-icon>
+      </a>
+      <a href="{% url 'main:accommodation_m' %}">
+      <ion-icon name="bed-outline" class="icon" onclick="change(this)">
+      </ion-icon>
+      </a>
+      <a href="{% url 'main:hotel_m' %}">
+      <ion-icon name="business-outline" class="icon" onclick="change(this)">
+      </ion-icon>
+      </a>
+    </div>
 
   <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC9V0M-2vgBWCAPEjp4tEKNfU_yk0kyCI8&libraries=places&callback=initAutocomplete">
@@ -149,4 +157,13 @@ Airport Taxis
             });
     }
     </script>
+<script>
+    function change(item){
+        const buttons = document.querySelectorAll('ion-icon');
+        buttons.forEach(function(obj){
+            obj.classList.remove("active");
+        });
+        item.classList.add("active");
+    }
+</script>
 {% endblock %}

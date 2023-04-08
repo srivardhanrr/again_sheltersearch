@@ -1,4 +1,4 @@
-{% extends 'layouts/default/base_page.html' %}
+{% extends 'layouts/default/base_page.html_m' %}
 {% load static %}
 {% load bootstrap5 %}
 {% bootstrap_css %}
@@ -10,9 +10,10 @@ Hotel Booking
 {% endblock %}
 
 {% block css %}
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
 <script type="text/javascript">
-    if (screen.width <= 768) {
-  window.location = "{% url 'main:hotel_m' %}";
+    if (screen.width > 768) {
+        window.location = "{% url 'main:hotel' %}";
     }
 </script>
 {% endblock %}
@@ -31,49 +32,35 @@ Hotel Booking
 
         <div class="row">
 
-            <div class="col-lg-6" data-aos="fade-up" data-aos-delay="400">
-            <div class="box">
-                <div class="card border-primary mb-3" style="max-width: 560px; max-height: 120px;">
-                  <div class="row g-0">
-                    <div class="col-md-3">
-                      <img width="150" src="{% static 'assets/img/plane.png' %}" class="img-fluid rounded-start" alt="...">
-                    </div>
-                    <div class="col-md-8">
-                      <div class="card-body">
-                          <h5 class="card-title"><b>Flight tracking</b></h5>
-                        <p class="card-text">Your driver will track your flight and wait for you if it's delayed</p>
+            <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+            <div class="box" style="padding: 1px 1px;">
+                    <div class="card border-primary" style="flex-direction: row">
+                  <img src="{% static 'assets/img/plane.webp' %}" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <div class="test-section">
+                        <h5 class="card-title"><b>Flight Tracking</b></h5>
+                      <p class="card-text">Your driver will track your flight and wait for you if it's delayed</p>
                       </div>
-                    </div>
+                  </div>
+                </div>
+                <div class="card border-primary" style="flex-direction: row">
+                  <img src="{% static 'assets/img/credit-card.webp' %}" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <div class="test-section">
+                        <h5 class="card-title"><b>One clear price</b></h5>
+                      <p class="card-text">Your price is confirmed up front – no extra costs, no cash required</p>
+                      </div>
+                  </div>
+                </div> <div class="card border-primary" style="flex-direction: row">
+                  <img src="{% static 'assets/img/checked.webp' %}" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <div class="test-section">
+                        <h5 class="card-title"><b>Tried and true service</b></h5>
+                      <p class="card-text">We work with professional drivers and have 24/7 customer care</p>
+                      </div>
                   </div>
                 </div>
 
-                <div class="card border-primary mb-3" style="max-width: 560px; max-height: 120px;">
-                  <div class="row g-0">
-                    <div class="col-md-3">
-                      <img width="150" src="{% static 'assets/img/credit-card.png' %}" class="img-fluid rounded-start" alt="...">
-                    </div>
-                    <div class="col-md-8">
-                      <div class="card-body">
-                          <h5 class="card-title"><b>One clear price</b></h5>
-                        <p class="card-text">Your price is confirmed up front – no extra costs, no cash required</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="card border-primary mb-3" style="max-width: 560px; max-height: 120px;">
-                  <div class="row g-0">
-                    <div class="col-md-3">
-                      <img width="150" src="{% static 'assets/img/checked.png' %}" class="img-fluid rounded-start" alt="...">
-                    </div>
-                    <div class="col-md-8">
-                      <div class="card-body">
-                          <h5 class="card-title"><b>Tried and true service</b></h5>
-                        <p class="card-text">We work with professional drivers and have 24/7 customer care</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
             </div>
         </div>
 
@@ -130,17 +117,17 @@ Hotel Booking
                 </div>
                 <div></div>
                 <div class="col-md-12 text-center">
-                  <button type="submit" value="Submit" class="btn btn-primary">Find Hotel</button>
+                  <button type="submit" value="Submit" class="btn btn-primary">Book Hotel</button>
                 </div>
               </div>
             </form>
             </div>
-        <button class="btn btn-primary col-3 offset-md-9 mt-3">
-            <span>Book Taxi</span>
+              <div class="container">
+        <button class="btn btn-primary col-5 offset-md-10 mt-3" style="flex-direction: row">
+            <span><a style="color: white" href="{% url 'main:taxi' %}">Book Taxi</a></span>
         </button>
+                  </div>
           </div>
-
-
 
         </div>
       </div>
@@ -148,21 +135,69 @@ Hotel Booking
     </div>
 
     </section>
-
+<div class="bottom-bar">
+      <a href="{% url 'main:index' %}">
+      <ion-icon name="home-outline" class="icon" onclick="change(this)">
+      </ion-icon>
+      </a>
+      <a href="{% url 'main:taxi_m' %}">
+      <ion-icon name="car-outline" class="icon" onclick="change(this)">
+      </ion-icon>
+      </a>
+      <a href="{% url 'main:accommodation_m' %}">
+      <ion-icon name="bed-outline" class="icon" onclick="change(this)">
+      </ion-icon>
+      </a>
+      <a href="{% url 'main:hotel_m' %}">
+      <ion-icon name="business-outline" class="icon active" onclick="change(this)">
+      </ion-icon>
+      </a>
+</div>
+    <script async
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC9V0M-2vgBWCAPEjp4tEKNfU_yk0kyCI8&libraries=places&callback=initAutocomplete">
+  </script>
+  <script>
+    let autocomplete;
+    var bangaloreBounds = new google.maps.LatLngBounds(
+        new google.maps.LatLng(12.864162, 77.438610),
+        new google.maps.LatLng(13.139807, 77.711895));
+    function initAutocomplete() {
+      autocomplete = new google.maps.places.Autocomplete(
+              document.getElementById('autocomplete'),
+              {
+                bounds: bangaloreBounds,
+                strictBounds: true,
+                // types: ['university', 'locality', 'landmark', 'neighborhood', 'street_address'],
+                componentRestrictions: {'country': 'IN'},
+                // fields: ['place_id', 'geometry', 'name']
+              });
+    }
+    </script>
 <script>
-    document.getElementById("accommodation").addEventListener("change", function() {
+  document.getElementById("accommodation").addEventListener("change", function() {
   var journey = document.getElementById("accommodation").value;
   var color = document.getElementById("occupancy");
+  var gender = document.getElementById("gender");
 
   if (journey === "Pg") {
     color.innerHTML = "<option value='single'>Single Sharing</option>" +
         "<option value='Double'>Double Sharing</option>" +
         "<option value='Triple'>Triple Sharing</option>";
+    gender.outerHTML = "<div class='col-md-6'>" +
+        "<label class='form-label'><b>Gender</b></label>" +
+        "                    <select name='gender' class='form-control' required>" +
+        "                        <option value disabled selected hidden>Gender</option>" +
+        "                        <option value='Male'>Male</option>" +
+        "                        <option value='Female'>Female</option>" +
+        "                        <option value='Other'>Other</option>" +
+        "                    </select>" +
+        "</div>";
   } else if (journey === "Flat") {
     color.innerHTML = "<option value='1 BHK'>1 BHK</option>" +
         "<option value='2 BHK'>2 BHK</option>" +
         "<option value='3 BHK'>3 BHK</option>" +
         "<option value='4 BHK'>4 BHK</option>";
+    gender.innerHTML = "<div id='gender'></div>";
   } else if (journey === "Hostel") {
     color.innerHTML = "<option value='single'>Single Sharing</option>" +
         "<option value='Double'>Double Sharing</option>" +
@@ -172,24 +207,13 @@ Hotel Booking
   }
 });
 </script>
-
-  <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC9V0M-2vgBWCAPEjp4tEKNfU_yk0kyCI8&libraries=places&callback=initAutocomplete">
-  </script>
-  <script>
-    let autocomplete;
-    var bangaloreBounds = new google.maps.LatLngBounds(
-        new google.maps.LatLng(12.864162, 77.438610),
-        new google.maps.LatLng(13.139807, 77.711895));
-    function initAutocomplete() {
-        autocomplete = new google.maps.places.Autocomplete(
-            document.getElementById('autocomplete'),
-            {
-                bounds: bangaloreBounds,
-                strictBounds: true,
-                // types: ['university', 'locality', 'landmark', 'neighborhood', 'street_address'],
-                componentRestrictions: {'country': 'IN'},
-            });
+<script>
+    function change(item){
+        const buttons = document.querySelectorAll('ion-icon');
+        buttons.forEach(function(obj){
+            obj.classList.remove("active");
+        });
+        item.classList.add("active");
     }
-    </script>
+</script>
 {% endblock %}
