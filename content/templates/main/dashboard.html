@@ -11,3 +11,44 @@ Dashboard
     }
 </script>
 {% endblock %}
+
+{% block content %}
+<section class="values">
+
+  <div class="container" data-aos="fade-up">
+
+        <header class="section-header">
+            <br>
+          <p>Hotel Booking</p>
+            <br>
+        </header>
+
+    <h2><u>Airport Services</u></h2>
+  <ul>
+    {% for service in airport_services %}
+      <li>{{ service.client }} - {{ service.journey_type }}</li>
+    {% empty %}
+      <li>No airport services found.</li>
+    {% endfor %}
+  </ul>
+
+    <h2><u>Accommodation Services</u></h2>
+  <ul>
+    {% for service in accommodation_services %}
+      <li>{{ service.client }} - {{ service.occupancy }}</li>
+    {% empty %}
+      <li>No accommodation services found.</li>
+    {% endfor %}
+  </ul>
+
+    <h2><u>Hotel Services</u></h2>
+  <ul>
+    {% for service in hotel_services %}
+      <li><a href="{% url 'main:hotel' %}">{{ service.client }} - {{ service.budget }}</a></li>
+    {% empty %}
+      <li>No hotel services found.</li>
+    {% endfor %}
+  </ul>
+  </div>
+  </section>
+{% endblock %}

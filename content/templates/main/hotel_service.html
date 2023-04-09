@@ -80,19 +80,18 @@ Hotel Booking
           <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
             <div class="box">
                 {% bootstrap_messages %}
-                <form action="{% url 'main:accommodation' %}" method="post" role="form">
+                <form action="{% url 'main:hotel' %}" method="post" role="form">
                 <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
-                <input type="hidden" name="order_id" value="{{ order_id }}">
               <div class="row gy-4">
 
                   <div class="col-md-6">
                       <label class="form-label"><b>Location</b></label>
-                    <input type="text" id="autocomplete" class="form-control" name="location" placeholder="Ex - Kormangala, Bengaluru" required>
+                    <input type="text" id="autocomplete" class="form-control" name="address" placeholder="Ex - Kormangala, Bengaluru" required>
                   </div>
 
                 <div class="col-md-6">
                     <label class="form-label" for="accommodation"><b>Preferred Budget</b></label>
-                    <select name="accommodation_type" class="form-control" id="accommodation" required>
+                    <select name="budget" class="form-control" id="accommodation" required>
                         <option value disabled selected hidden>Select budget</option>
                         <option value="0 - 1500" >0 - 1000</option>
                         <option value="1000 - 1500" >1000 - 1500</option>
@@ -104,25 +103,25 @@ Hotel Booking
 
                   <div class="col-md-6">
                       <label class="form-label"><b>Check in Date</b></label>
-                    <input type="date" class="form-control" name="move_in_date" required>
+                    <input type="date" class="form-control" name="check_in_date" required>
                   </div>
 
                   <div class="col-md-6">
                       <label class="form-label"><b>Check out Date</b></label>
-                    <input type="date" class="form-control" name="move_in_date" required>
+                    <input type="date" class="form-control" name="check_out_date" required>
                   </div>
 
                 <div class="col-md-6">
                     <label class="form-label" for="occupancy"><b>Rooms</b></label>
-                        <select name="occupancy" class="form-control" id="occupancy" required>
+                        <select name="room" class="form-control" id="occupancy" required>
                             <option value="1" selected>1 Room</option>
                             <option value="2">2 Room</option>
                             <option value="3">3 Room</option>
                         </select>
                 </div>
                 <div class="col-md-6">
-                    <label class="form-label" for="occupancy"><b>People</b></label>
-                        <select name="occupancy" class="form-control" id="people" required>
+                    <label class="form-label" for="people"><b>People</b></label>
+                        <select name="people" class="form-control" id="people" required>
                             <option value="1">1 Adult</option>
                             <option value="2" selected>2 Adults</option>
                             <option value="3">3 or more</option>
@@ -140,38 +139,12 @@ Hotel Booking
         </button>
           </div>
 
-
-
         </div>
       </div>
     <div class="container">
     </div>
 
     </section>
-
-<script>
-    document.getElementById("accommodation").addEventListener("change", function() {
-  var journey = document.getElementById("accommodation").value;
-  var color = document.getElementById("occupancy");
-
-  if (journey === "Pg") {
-    color.innerHTML = "<option value='single'>Single Sharing</option>" +
-        "<option value='Double'>Double Sharing</option>" +
-        "<option value='Triple'>Triple Sharing</option>";
-  } else if (journey === "Flat") {
-    color.innerHTML = "<option value='1 BHK'>1 BHK</option>" +
-        "<option value='2 BHK'>2 BHK</option>" +
-        "<option value='3 BHK'>3 BHK</option>" +
-        "<option value='4 BHK'>4 BHK</option>";
-  } else if (journey === "Hostel") {
-    color.innerHTML = "<option value='single'>Single Sharing</option>" +
-        "<option value='Double'>Double Sharing</option>" +
-        "<option value='Triple'>Triple Sharing</option>";
-  } else {
-    color.innerHTML = ""; // default to no options
-  }
-});
-</script>
 
   <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC9V0M-2vgBWCAPEjp4tEKNfU_yk0kyCI8&libraries=places&callback=initAutocomplete">

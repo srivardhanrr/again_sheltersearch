@@ -15,5 +15,4 @@ urlpatterns = [
     path('hotel/m/', HotelServiceViewM.as_view(), name='hotel_m'),
 
     path('test/', TestPageView.as_view(), name='test'),
-    path('test2/', Test2PageView.as_view(), name='test2')
 ]

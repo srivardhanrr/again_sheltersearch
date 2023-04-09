@@ -6,10 +6,51 @@ Dashboard
 
 {% block css %}
 <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-
+<script type="text/javascript">
+    if (screen.width > 768) {
+        window.location = "{% url 'main:index' %}";
+    }
+</script>
 {% endblock %}
 
 {% block content %}
+<section class="values">
+    <div class="container" data-aos="fade-up">
+
+        <header class="section-header">
+            <br>
+          <p>All Booking</p>
+            <br>
+        </header>
+
+        <h2><u>Airport Services</u></h2>
+  <ul>
+    {% for service in airport_services %}
+      <li>{{ service.client }} - {{ service.journey_type }}</li>
+    {% empty %}
+      <li>No airport services found.</li>
+    {% endfor %}
+  </ul>
+
+  <h2><u>Accommodation Services</u></h2>
+  <ul>
+    {% for service in accommodation_services %}
+      <li>{{ service.client }} - {{ service.occupancy }}</li>
+    {% empty %}
+      <li>No accommodation services found.</li>
+    {% endfor %}
+  </ul>
+
+  <h2><u>Hotel Services</u></h2>
+  <ul>
+    {% for service in hotel_services %}
+      <li><a href="{% url 'main:hotel' %}">{{ service.client }} - {{ service.budget }}</a></li>
+    {% empty %}
+      <li>No hotel services found.</li>
+    {% endfor %}
+  </ul>
+    </div>
+  </section>
 <div class="bottom-bar">
       <a href="{% url 'main:index' %}">
       <ion-icon name="home-outline" class="icon active" onclick="change(this)">

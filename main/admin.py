@@ -11,3 +11,8 @@ class AirportTaxiServiceAdmin(admin.ModelAdmin):
 @admin.register(AccommodationService)
 class AirportTaxiServiceAdmin(admin.ModelAdmin):
     list_display = ("client", "created_at", "accommodation_type", "occupancy", )
+
+
+@admin.register(HotelService)
+class HotelServiceAdmin(admin.ModelAdmin):
+    list_display = ("client", "created_at", "room", "check_in_date", )

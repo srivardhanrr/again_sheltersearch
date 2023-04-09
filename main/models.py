@@ -32,3 +32,15 @@ class AccommodationService(models.Model):
     checked = models.CharField(max_length=5, blank=True, choices=(("Y", "Yes"), ("N", "No")))
     created_at = models.DateTimeField(auto_now_add=True, null=True, blank=True)
 
+
+class HotelService(models.Model):
+    client = models.ForeignKey(User, on_delete=models.CASCADE)
+    budget = models.CharField(max_length=20)
+    room = models.CharField(max_length=15)
+    people = models.CharField(max_length=15)
+    check_in_date = models.DateField()
+    check_out_date = models.DateField()
+    address = models.CharField(max_length=200)
+    order_id = models.CharField(max_length=50, unique=True)
+    checked = models.CharField(max_length=5, blank=True, choices=(("Y", "Yes"), ("N", "No")))
+    created_at = models.DateTimeField(auto_now_add=True, null=True, blank=True)
