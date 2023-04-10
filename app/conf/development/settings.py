@@ -10,7 +10,7 @@ CONTENT_DIR = os.path.join(BASE_DIR, 'content')
 
 SECRET_KEY = 'NhfTvayqggTBPswCXXhWaN69HuglgZIkM'
 
-DEBUG = True
+DEBUG = False
 ALLOWED_HOSTS = ['07b3-119-82-126-254.ngrok-free.app', '127.0.0.1', 'beta.sheltersearch.in',  'sheltersearch.in']
 
 SITE_ID = 1

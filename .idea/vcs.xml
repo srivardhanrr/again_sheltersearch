@@ -3,7 +3,5 @@
   <component name="VcsDirectoryMappings">
     <mapping directory="" vcs="Git" />
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/content/templates/authentication/bootstrap-5-login-page" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/simple-django-login-and-register" vcs="Git" />
   </component>
 </project>

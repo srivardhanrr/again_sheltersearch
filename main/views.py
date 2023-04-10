@@ -2,7 +2,7 @@ from django.views.generic import TemplateView
 from .forms import AirportTaxiServiceForm, AccommodationServiceForm, HotelServiceForm
 from .models import AirportTaxiService, AccommodationService, HotelService
 from django.contrib import messages
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, HttpResponse, get_object_or_404
 from django.contrib.auth.mixins import LoginRequiredMixin
 import uuid
 from django.utils import timezone
@@ -180,4 +180,14 @@ class AccommodationServiceView(TemplateView):
 
 class TestPageView(TemplateView):
     template_name = 'main/test.html'
+
+
+class HotelBookingView(TemplateView):
+    template_name = 'main/hotel_booking.html'
+
+    def get(self, request, order_id):
+        service = get_object_or_404(HotelService, order_id=order_id)
+        return render(request, self.template_name, {'service': service})
+
+
 

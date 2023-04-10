@@ -19,10 +19,10 @@ Dashboard
 
         <header class="section-header">
             <br>
-          <p>Hotel Booking</p>
+          <p>All Booking</p>
             <br>
         </header>
-
+    <h1>Hi {{ request.user.username }}</h1>
     <h2><u>Airport Services</u></h2>
   <ul>
     {% for service in airport_services %}
@@ -44,7 +44,7 @@ Dashboard
     <h2><u>Hotel Services</u></h2>
   <ul>
     {% for service in hotel_services %}
-      <li><a href="{% url 'main:hotel' %}">{{ service.client }} - {{ service.budget }}</a></li>
+      <li><a href="{% url 'main:hotel' %}{{ service.order_id }}">{{ service.client }} - {{ service.check_in_date }}</a></li>
     {% empty %}
       <li>No hotel services found.</li>
     {% endfor %}
