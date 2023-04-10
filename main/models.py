@@ -42,5 +42,6 @@ class HotelService(models.Model):
     check_out_date = models.DateField()
     address = models.CharField(max_length=200)
     order_id = models.CharField(max_length=50, unique=True)
+    date = models.CharField(default="Yes", max_length=23)
     checked = models.CharField(max_length=5, blank=True, choices=(("Y", "Yes"), ("N", "No")))
     created_at = models.DateTimeField(auto_now_add=True, null=True, blank=True)
